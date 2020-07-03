@@ -1,0 +1,22 @@
+version: "3"
+services:
+  php:
+    image: php:lastest
+    ports:
+      - "80:80"
+      - "430:430"
+    volumes:
+      - ${PWD}:${}
+
+    environment:
+      - TEST=test
+
+  mariadb:
+    image: mariadb:lastest
+    ports:
+      - "80:80"
+  httpd:
+    image: httpd:latest
+    ports:
+      - "8080:8080"
+      - "443:443"
