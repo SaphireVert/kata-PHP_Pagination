@@ -94,16 +94,30 @@
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-4">
             <div class="list-group table-of-contents">
-              <a class="list-group-item" href="#navbar">Navbar</a>
-              <a class="list-group-item" href="#buttons">Buttons</a>
-              <a class="list-group-item" href="#typography">Typography</a>
-              <a class="list-group-item" href="#tables">Tables</a>
-              <a class="list-group-item" href="#forms">Forms</a>
-              <a class="list-group-item" href="#navs">Navs</a>
-              <a class="list-group-item" href="#indicators">Indicators</a>
-              <a class="list-group-item" href="#progress-bars">Progress bars</a>
-              <a class="list-group-item" href="#containers">Containers</a>
-              <a class="list-group-item" href="#dialogs">Dialogs</a>
+              <?php
+                $test = "sgohfohsdfo";
+                $jsonString = file_get_contents("assets/data/records.json");
+                $jobject = json_decode ($jsonString);
+                $status = $jobject->releases[0]->status;
+                $thumb = $jobject->releases[0]->thumb;
+                $format = $jobject->releases[0]->format;
+                $title = $jobject->releases[0]->title;
+                $catno = $jobject->releases[0]->catno;
+                $year = $jobject->releases[0]->year;
+                $resource_url = $jobject->releases[0]->resource_url;
+                $artist = $jobject->releases[0]->artist;
+                $id = $jobject->releases[0]->id;
+              ?>
+              <a class="list-group-item" href="#navbar"><?=$status?></a>
+              <a class="list-group-item" href="#buttons"><?=$thumb?></a>
+              <a class="list-group-item" href="#typography"><?=$format?></a>
+              <a class="list-group-item" href="#tables"><?=$title?></a>
+              <a class="list-group-item" href="#forms"><?=$catno?></a>
+              <a class="list-group-item" href="#navs"><?=$year?></a>
+              <a class="list-group-item" href="#indicators"><?=$resource_url?></a>
+              <a class="list-group-item" href="#progress-bars"><?=$artist?></a>
+              <a class="list-group-item" href="#containers"><?=$id?></a>
+              <a class="list-group-item" href="#dialogs">Nothing</a>
             </div>
           </div>
         </div>

@@ -42,7 +42,16 @@
       </div>
     </div>
   </div>
+<?php
+  $jsonString = file_get_contents("assets/data/records.json");
+  $jobject = json_decode ($jsonString);
+  // var_dump($jobject->releases[0]->status);
+  echo ($jobject->releases[0]->status);
 
+  // $array = array(1, 1, 1, 1,  1, 8 => 1,  4 => 1, 19, 3 => 13);
+  // print_r($array[0]);
+
+?>
   <div class="container">
     <div class="page-header" id="banner">
       <div class="row">
