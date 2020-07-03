@@ -1,22 +1,8 @@
 version: "3"
 services:
   php:
-    image: php:lastest
+    image: php:7.2-apache
     ports:
-      - "80:80"
-      - "430:430"
+      - "8080:80"
     volumes:
-      - ${PWD}:${}
-
-    environment:
-      - TEST=test
-
-  mariadb:
-    image: mariadb:lastest
-    ports:
-      - "80:80"
-  httpd:
-    image: httpd:latest
-    ports:
-      - "8080:8080"
-      - "443:443"
+      - ${PWD}:/var/www/html
