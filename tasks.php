@@ -13,7 +13,7 @@
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="index.html" class="navbar-brand">Test PHP — Pagination</a>
+          <a href="index.php" class="navbar-brand">Test PHP — Pagination</a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -23,13 +23,13 @@
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             <li>
-              <a href="index.html">Accueil</a>
+              <a href="index.php">Accueil</a>
             </li>
             <li>
-              <a href="tasks.html" class="active">Liste des tâches</a>
+              <a href="tasks.php" class="active">Liste des tâches</a>
             </li>
             <li>
-              <a href="records.html">Records</a>
+              <a href="records.php">Records</a>
             </li>
           </ul>
 
@@ -57,8 +57,8 @@
             <div class="checkbox">
               <label><input type="checkbox"> Modifier le nécessaire pour passer le site sous PHP ;</label><br />
               <label><input type="checkbox"> Faire une fonction qui lit le fichier <a href="./assets/data/records.json">records.json</a> et qui retourne une variable (<a href="http://php.net/manual/en/function.json-decode.php">hint</a>) ;</label><br />
-              <label><input type="checkbox"> Utiliser l'exemple de table disponible <a href="bootswatch.html">ici</a> et afficher les valeurs du fichier <a href="./assets/data/records.json">records.json</a> ;</label><br />
-              <label><input type="checkbox"> Mettre en place un système de pagination (exemple de sélecteur de page disponible <a href="bootswatch.html">ici</a>).</label><br />
+              <label><input type="checkbox"> Utiliser l'exemple de table disponible <a href="bootswatch.php">ici</a> et afficher les valeurs du fichier <a href="./assets/data/records.json">records.json</a> ;</label><br />
+              <label><input type="checkbox"> Mettre en place un système de pagination (exemple de sélecteur de page disponible <a href="bootswatch.php">ici</a>).</label><br />
             </div>
 
             <h3>Mais aussi...</h3>

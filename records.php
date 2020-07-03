@@ -15,7 +15,7 @@
   <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <a href="index.html" class="navbar-brand">Test PHP — Pagination</a>
+        <a href="index.php" class="navbar-brand">Test PHP — Pagination</a>
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -25,13 +25,13 @@
       <div class="navbar-collapse collapse" id="navbar-main">
         <ul class="nav navbar-nav">
           <li>
-            <a href="index.html">Accueil</a>
+            <a href="index.php">Accueil</a>
           </li>
           <li>
-            <a href="tasks.html">Liste des tâches</a>
+            <a href="tasks.php">Liste des tâches</a>
           </li>
           <li>
-            <a href="records.html" class="active">Records</a>
+            <a href="records.php" class="active">Records</a>
           </li>
         </ul>
 
@@ -43,9 +43,7 @@
     </div>
   </div>
 
-
   <div class="container">
-
     <div class="page-header" id="banner">
       <div class="row">
         <div class="col-lg-8 col-md-7 col-sm-6">
