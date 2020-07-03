@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+  // ini_set('display_errors', 1);
+  // ini_set('display_startup_errors', 1);
+  // error_reporting(E_ALL);
+?>
 <html lang="en">
 
 <head>
@@ -42,16 +47,7 @@
       </div>
     </div>
   </div>
-<?php
-  $jsonString = file_get_contents("assets/data/records.json");
-  $jobject = json_decode ($jsonString);
-  // var_dump($jobject->releases[0]->status);
-  echo ($jobject->releases[0]->status);
 
-  // $array = array(1, 1, 1, 1,  1, 8 => 1,  4 => 1, 19, 3 => 13);
-  // print_r($array[0]);
-
-?>
   <div class="container">
     <div class="page-header" id="banner">
       <div class="row">
@@ -120,6 +116,15 @@
             </tbody>
           </table>
         </div>
+
+        <nav>
+        <?php for($page = 1; $page <= 10; $page++): ?>
+            <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+            <li class="page-item <?= (5 == $page) ? "active" : "" ?>">
+                <a href="./?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+            </li>
+        <?php endfor ?>
+        </nav>
 
         <div class="col-lg-12">
           <h2 id="pagination">Pagination</h2>
