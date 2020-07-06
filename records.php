@@ -48,6 +48,8 @@
     </div>
   </div>
 
+<?php $page=5 ?>
+
   <div class="container">
     <div class="page-header" id="banner">
       <div class="row">
@@ -59,60 +61,55 @@
           <img src="./assets/img/ninjatunesmonkey.jpg" width="250px" />
         </div>
 
+        <div class="btn-group">
+          <a href="#" class="btn btn-default">Par page :</a>
+          <div class="btn-group">
+            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#?page=<?=$page?>&perPage=10" value="10">10</a></li>
+              <li><a href="#?page=<?=$page?>&perPage=25">25</a></li>
+              <li><a href="#?page=<?=$page?>&perPage=50">50</a></li>
+              <li><a href="#?page=<?=$page?>&perPage=100">100</a></li>
+              <li><a href="#?page=<?=$page?>&perPage=10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000">1'000'000'000 MOUAHAHAHAH !!!</a></li>
+             </ul>
+          </div>
+        </div>
+
         <div class="col-lg-12">
           <h2 id="tables">Tables</h2>
           <table class="table table-striped table-hover ">
             <thead>
               <tr>
-                <th>#</th>
-                <th>Column heading</th>
-                <th>Column heading</th>
-                <th>Column heading</th>
+                <th>N°</th>
+                <th>status</th>
+                <th>thumb</th>
+                <th>format</th>
+                <th>title</th>
+                <th>catno</th>
+                <th>year</th>
+                <th>resource_url</th>
+                <th>artist</th>
+                <th>id</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
-              <tr class="info">
-                <td>3</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
-              <tr class="success">
-                <td>4</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
-              <tr class="danger">
-                <td>5</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
-              <tr class="warning">
-                <td>6</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
-              <tr class="active">
-                <td>7</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
+              <?php for($page = 1; $page <= 10; $page++): ?>
+                <tr>
+                  <td><?=$page?></td>
+                  <td>Column content</td>
+                  <td>Column content</td>
+                  <td>Column content</td>
+                  <td>Column content</td>
+                  <td>Column content</td>
+                  <td>Column content</td>
+                  <td>Column content</td>
+                  <td>Column content</td>
+                  <td>Column content</td>
+                </tr>
+              <?php endfor ?>
             </tbody>
           </table>
         </div>
