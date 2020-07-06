@@ -117,24 +117,24 @@
           </table>
         </div>
 
-        <nav>
         <?php for($page = 1; $page <= 10; $page++): ?>
             <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
             <li class="page-item <?= (5 == $page) ? "active" : "" ?>">
                 <a href="./?page=<?= $page ?>" class="page-link"><?= $page ?></a>
             </li>
         <?php endfor ?>
-        </nav>
 
+        <?php $current_page = 1 ?>
         <div class="col-lg-12">
           <h2 id="pagination">Pagination</h2>
             <ul class="pagination">
               <li class="disabled"><a href="#">&laquo;</a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
+              <?php for($page = 1; $page <= 10; $page++): ?>
+                  <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+                  <li class="page-item <?= ($current_page == $page) ? "active" : "" ?>">
+                      <a href="./?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+                  </li>
+              <?php endfor ?>
               <li><a href="#">&raquo;</a></li>
             </ul>
             <br />
