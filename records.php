@@ -48,7 +48,33 @@
     </div>
   </div>
 
-<?php $page=5 ?>
+<?php
+  $page=2;
+  $perPage=10;
+  $jsonString = file_get_contents("assets/data/records.json");
+  $jobject = json_decode ($jsonString);
+  $nbEntry = 0;
+  foreach ($jobject->releases as $entry) {
+    $nbEntry++;
+  }
+  echo "nbEntry:";
+  echo $nbEntry;
+  $status = $jobject->releases[0]->status;
+  $nbPagination = $nbEntry / $perPage;
+  $modulo=$nbEntry%$perPage;
+  round($nbPagination, 0);
+  echo $nbPagination, $modulo;
+  if ($modulo == 0) {
+    echo "coucou";
+    echo $nbPagination;
+  }
+  else {
+    echo "hey";
+    $nbPagination++;
+    $nbPagination = (int)$nbPagination;
+    echo $nbPagination;
+  }
+?>
 
   <div class="container">
     <div class="page-header" id="banner">
@@ -96,30 +122,30 @@
               </tr>
             </thead>
             <tbody>
-              <?php for($page = 1; $page <= 10; $page++): ?>
+
+              <?php
+              $keynumber=$page*$perPage-$perPage;
+              echo $keynumber;
+              for($line = 1; $line <= $perPage; $line++): ?>
                 <tr>
-                  <td><?=$page?></td>
-                  <td>Column content</td>
-                  <td>Column content</td>
-                  <td>Column content</td>
-                  <td>Column content</td>
-                  <td>Column content</td>
-                  <td>Column content</td>
-                  <td>Column content</td>
-                  <td>Column content</td>
-                  <td>Column content</td>
+                  <td><?=$keynumber + 1?></td>
+                  <td><?=$jobject->releases[$keynumber]->status?></td>
+                  <td><?=$jobject->releases[$keynumber]->thumb?></td>
+                  <td><?=$jobject->releases[$keynumber]->format?></td>
+                  <td><?=$jobject->releases[$keynumber]->title?></td>
+                  <td><?=$jobject->releases[$keynumber]->catno?></td>
+                  <td><?=$jobject->releases[$keynumber]->year?></td>
+                  <td><?=$jobject->releases[$keynumber]->resource_url?></td>
+                  <td><?=$jobject->releases[$keynumber]->artist?></td>
+                  <td><?=$jobject->releases[$keynumber]->id?></td>
                 </tr>
-              <?php endfor ?>
+              <?php
+              $keynumber++;
+              endfor ?>
             </tbody>
           </table>
         </div>
 
-        <?php for($page = 1; $page <= 10; $page++): ?>
-            <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
-            <li class="page-item <?= (5 == $page) ? "active" : "" ?>">
-                <a href="./?page=<?= $page ?>" class="page-link"><?= $page ?></a>
-            </li>
-        <?php endfor ?>
 
         <?php $current_page = 1 ?>
         <div class="col-lg-12">
