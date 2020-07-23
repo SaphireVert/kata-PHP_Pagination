@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <?php
-  // ini_set('display_errors', 1);
-  // ini_set('display_startup_errors', 1);
-  // error_reporting(E_ALL);
+
+$perPage = $_GET['perPage'] ? $_GET['perPage'] : 10;
 ?>
 <html lang="en">
 
@@ -50,29 +49,29 @@
 
 <?php
   $page=2;
-  $perPage=10;
+  // $perPage=20;
   $jsonString = file_get_contents("assets/data/records.json");
   $jobject = json_decode ($jsonString);
   $nbEntry = 0;
   foreach ($jobject->releases as $entry) {
     $nbEntry++;
   }
-  echo "nbEntry:";
-  echo $nbEntry;
+  // echo "nbEntry:";
+  // echo $nbEntry;
   $status = $jobject->releases[0]->status;
   $nbPagination = $nbEntry / $perPage;
   $modulo=$nbEntry%$perPage;
   round($nbPagination, 0);
-  echo $nbPagination, $modulo;
+  // echo $nbPagination, $modulo;
   if ($modulo == 0) {
-    echo "coucou";
-    echo $nbPagination;
+    // echo "coucou";
+    // echo $nbPagination;
   }
   else {
-    echo "hey";
+    // echo "hey";
     $nbPagination++;
     $nbPagination = (int)$nbPagination;
-    echo $nbPagination;
+    // echo $nbPagination;
   }
 ?>
 
@@ -88,24 +87,15 @@
         </div>
 
         <div class="btn-group">
-          <a href="#" class="btn btn-default">Par page :</a>
-          <div class="btn-group">
-            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="#?page=<?=$page?>&perPage=10" value="10">10</a></li>
-              <li><a href="#?page=<?=$page?>&perPage=25">25</a></li>
-              <li><a href="#?page=<?=$page?>&perPage=50">50</a></li>
-              <li><a href="#?page=<?=$page?>&perPage=100">100</a></li>
-              <li><a href="#?page=<?=$page?>&perPage=10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000">1'000'000'000 MOUAHAHAHAH !!!</a></li>
-             </ul>
-          </div>
+          <a  class="btn btn-default">Par page :</a>
+          <a href="?page=<?=$page?>&perPage=10" class="btn btn-default<?=($perPage==10)?' active':''?>">10</a>
+          <a href="?page=<?=$page?>&perPage=25" class="btn btn-default<?=($perPage==25)?' active':''?>">25</a>
+          <a href="?page=<?=$page?>&perPage=50" class="btn btn-default<?=($perPage==50)?' active':''?>">50</a>
+          <a href="?page=<?=$page?>&perPage=100" class="btn btn-default<?=($perPage==100)?' active':''?>">100</a>
         </div>
 
         <div class="col-lg-12">
-          <h2 id="tables">Tables</h2>
+          <h2 id="tables">Records</h2>
           <table class="table table-striped table-hover ">
             <thead>
               <tr>
@@ -125,7 +115,7 @@
 
               <?php
               $keynumber=$page*$perPage-$perPage;
-              echo $keynumber;
+              // echo $keynumber;
               for($line = 1; $line <= $perPage; $line++): ?>
                 <tr>
                   <td><?=$keynumber + 1?></td>
