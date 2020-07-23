@@ -56,21 +56,12 @@
   foreach ($jobject->releases as $entry) {
     $nbEntry++;
   }
-  echo "nbEntry:";
-  echo $nbEntry . "<br>";
   $status = $jobject->releases[0]->status;
   $nbPagination = $nbEntry / $perPage;
   $modulo=$nbEntry%$perPage;
-  echo $nbPagination, $modulo . "<br>";
-  if ($modulo == 0) {
-    echo "coucou" . "<br>";
-    echo $nbPagination . "<br>";
-  }
-  else {
-    echo "hey" . "<br>";
+  if ($modulo != 0) {
     $nbPagination++;
     $nbPagination = (int)$nbPagination;
-    echo $nbPagination . "<br>";
   }
 ?>
 
@@ -152,11 +143,9 @@
                 else {
                   $tmpNoPage = $current_page - 4;
                 }
-                // $tmpNoPage = ($current_page <= 5) ? 1 : $current_page - 4;
-                // $tmpNoPage = ($current_page >=  (int)$nbPagination - 4) ? (int)$nbPagination - 4 : $current_page;
                 for($nbPage = 1; $nbPage  <= 9; $nbPage++): ?>
                     <li class="page-item <?= ($current_page == $tmpNoPage) ? "active disabled" : "" ?>">
-                        <a href="?page=<?= $tmpNoPage ?>&perPage=<?=$perPage?>" class="page-link"><?= $tmpNoPage ?></a>
+                        <a href="<?=($current_page != $tmpNoPage) ? "?page=$tmpNoPage&perPage=$perPage" : ""?>" class="page-link"><?= $tmpNoPage ?></a>
                     </li>
               <?php
                 $tmpNoPage++;
