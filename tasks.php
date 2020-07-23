@@ -1,46 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>PHPTest — Pagination</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" href="./assets/css/custom.min.css" media="screen">
-    <link rel="stylesheet" href="./assets/css/style.css" media="screen">
-  </head>
-  <body>
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="index.php" class="navbar-brand">Test PHP — Pagination</a>
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav">
-            <li>
-              <a href="index.php">Accueil</a>
-            </li>
-            <li>
-              <a href="tasks.php" class="active">Liste des tâches</a>
-            </li>
-            <li>
-              <a href="records.php">Records</a>
-            </li>
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="https://github.com/ponsfrilus/TestPaginationPHP" target="_blank">GitHub repo</a></li>
-          </ul>
-
-        </div>
-      </div>
-    </div>
-
+<?php
+  $pageTitle = "Tasks";
+  require "inc/header.php";
+  require "inc/menu.php";
+?>
 
     <div class="container">
 
@@ -108,18 +70,4 @@
           </div>
         </div>
       </div>
-
-      <footer>
-        <div class="row">
-          <div class="col-lg-12">
-            <ul class="list-unstyled">
-              <li class="pull-right"><a href="#top">Back to top</a></li>
-              <li><a href="https://github.com/ponsfrilus/TestPaginationPHP">View source on GitHub</a> <small>(Pull requests welcome)</small></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
-    </div>
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="./assets/js/bootstrap.min.js"></script>
-</html>
+<?php require "inc/footer.php"; ?>
