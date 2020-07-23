@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-  $page = $_GET['page'] ? $_GET['page'] : 1;
+  $current_page = $_GET['page'] ? $_GET['page'] : 1;
   $perPage = $_GET['perPage'] ? $_GET['perPage'] : 10;
 ?>
 <html lang="en">
@@ -48,7 +48,7 @@
   </div>
 
 <?php
-  // $page=1;
+  // $current_page=1;
   // $perPage=20;
   $jsonString = file_get_contents("assets/data/records.json");
   $jobject = json_decode ($jsonString);
@@ -56,22 +56,21 @@
   foreach ($jobject->releases as $entry) {
     $nbEntry++;
   }
-  // echo "nbEntry:";
-  // echo $nbEntry;
+  echo "nbEntry:";
+  echo $nbEntry . "<br>";
   $status = $jobject->releases[0]->status;
   $nbPagination = $nbEntry / $perPage;
   $modulo=$nbEntry%$perPage;
-  round($nbPagination, 0);
-  // echo $nbPagination, $modulo;
+  echo $nbPagination, $modulo . "<br>";
   if ($modulo == 0) {
-    // echo "coucou";
-    // echo $nbPagination;
+    echo "coucou" . "<br>";
+    echo $nbPagination . "<br>";
   }
   else {
-    // echo "hey";
+    echo "hey" . "<br>";
     $nbPagination++;
     $nbPagination = (int)$nbPagination;
-    // echo $nbPagination;
+    echo $nbPagination . "<br>";
   }
 ?>
 
@@ -88,10 +87,10 @@
 
         <div class="btn-group">
           <a  class="btn btn-default">Par page :</a>
-          <a href="?page=<?=$page?>&perPage=10" class="btn btn-default<?=($perPage==10)?' active':''?>">10</a>
-          <a href="?page=<?=$page?>&perPage=25" class="btn btn-default<?=($perPage==25)?' active':''?>">25</a>
-          <a href="?page=<?=$page?>&perPage=50" class="btn btn-default<?=($perPage==50)?' active':''?>">50</a>
-          <a href="?page=<?=$page?>&perPage=100" class="btn btn-default<?=($perPage==100)?' active':''?>">100</a>
+          <a href="?page=<?=$current_page?>&perPage=10" class="btn btn-default<?=($perPage==10)?' active':''?>">10</a>
+          <a href="?page=<?=$current_page?>&perPage=25" class="btn btn-default<?=($perPage==25)?' active':''?>">25</a>
+          <a href="?page=<?=$current_page?>&perPage=50" class="btn btn-default<?=($perPage==50)?' active':''?>">50</a>
+          <a href="?page=<?=$current_page?>&perPage=100" class="btn btn-default<?=($perPage==100)?' active':''?>">100</a>
         </div>
 
         <div class="col-lg-12">
@@ -114,7 +113,7 @@
             <tbody>
 
               <?php
-              $keynumber=$page*$perPage-$perPage;
+              $keynumber=$current_page*$perPage-$perPage;
               // echo $keynumber;
               for($line = 1; $line <= $perPage; $line++): ?>
                 <tr>
@@ -136,37 +135,33 @@
           </table>
         </div>
 
+<!-- if $current_page > 5
+  nbpage = currentpage -4 -->
 
-        <?php $current_page = 1 ?>
         <div class="col-lg-12">
           <h2 id="pagination">Pagination</h2>
             <ul class="pagination">
-              <li class="disabled"><a href="#">&laquo;</a></li>
-              <?php for($page = 1; $page <= 10; $page++): ?>
-                  <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
-                  <li class="page-item <?= ($current_page == $page) ? "active" : "" ?>">
-                      <a href="?page=<?= $page ?>&perPage=<?=$perPage?>" class="page-link"><?= $page ?></a>
-                  </li>
-              <?php endfor ?>
-              <li><a href="#">&raquo;</a></li>
-            </ul>
-            <br />
-            <ul class="pagination pagination-lg">
-              <li class="disabled"><a href="#">&laquo;</a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">&raquo;</a></li>
-            </ul>
-            <br />
-            <ul class="pagination pagination-sm">
-              <li class="disabled"><a href="#">&laquo;</a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">&raquo;</a></li>
+              <li><a href="?page=1">&laquo;</a></li>
+              <?php
+                if ($current_page <= 5) {
+                  $tmpNoPage = 1;
+                }
+                elseif ($current_page >= (int)$nbPagination - 4) {
+                  $tmpNoPage = (int)$nbPagination - 8;
+                }
+                else {
+                  $tmpNoPage = $current_page - 4;
+                }
+                // $tmpNoPage = ($current_page <= 5) ? 1 : $current_page - 4;
+                // $tmpNoPage = ($current_page >=  (int)$nbPagination - 4) ? (int)$nbPagination - 4 : $current_page;
+                for($nbPage = 1; $nbPage  <= 9; $nbPage++): ?>
+                    <li class="page-item <?= ($current_page == $tmpNoPage) ? "active disabled" : "" ?>">
+                        <a href="?page=<?= $tmpNoPage ?>&perPage=<?=$perPage?>" class="page-link"><?= $tmpNoPage ?></a>
+                    </li>
+              <?php
+                $tmpNoPage++;
+                endfor ?>
+              <li><a href="?page=<?= (int)$nbPagination ?>">&raquo;</a></li>
             </ul>
         </div>
       </div>
