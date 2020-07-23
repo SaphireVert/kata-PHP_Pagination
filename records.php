@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
-
-$perPage = $_GET['perPage'] ? $_GET['perPage'] : 10;
+  $page = $_GET['page'] ? $_GET['page'] : 1;
+  $perPage = $_GET['perPage'] ? $_GET['perPage'] : 10;
 ?>
 <html lang="en">
 
@@ -48,7 +48,7 @@ $perPage = $_GET['perPage'] ? $_GET['perPage'] : 10;
   </div>
 
 <?php
-  $page=2;
+  // $page=1;
   // $perPage=20;
   $jsonString = file_get_contents("assets/data/records.json");
   $jobject = json_decode ($jsonString);
@@ -145,7 +145,7 @@ $perPage = $_GET['perPage'] ? $_GET['perPage'] : 10;
               <?php for($page = 1; $page <= 10; $page++): ?>
                   <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
                   <li class="page-item <?= ($current_page == $page) ? "active" : "" ?>">
-                      <a href="./?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+                      <a href="?page=<?= $page ?>&perPage=<?=$perPage?>" class="page-link"><?= $page ?></a>
                   </li>
               <?php endfor ?>
               <li><a href="#">&raquo;</a></li>
