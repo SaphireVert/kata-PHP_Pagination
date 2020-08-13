@@ -1,4 +1,5 @@
 <?php
+  require "utils.php";
   $pageTitle = "Welcome";
   require "inc/header.php";
   require "inc/menu.php";

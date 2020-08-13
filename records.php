@@ -1,22 +1,15 @@
 <?php
+  require "utils.php";
+  getRecorsPaginationParams();
   $pageTitle = "Records";
   require "inc/header.php";
   require "inc/menu.php";
   $current_page = $_GET['page'] ? $_GET['page'] : 1;
   $perPage = $_GET['perPage'] ? $_GET['perPage'] : 10;
   $jsonString = file_get_contents("assets/data/records.json");
-  $jobject = json_decode ($jsonString);
-  $nbEntry = 0;
-  foreach ($jobject->releases as $entry) {
-    $nbEntry++;
-  }
-  $status = $jobject->releases[0]->status;
-  $nbPagination = $nbEntry / $perPage;
-  $modulo=$nbEntry%$perPage;
-  if ($modulo != 0) {
-    $nbPagination++;
-    $nbPagination = (int)$nbPagination;
-  }
+  $jobject = json_decode($jsonString);
+  $nbEntries = count((array)$jobject->releases);
+  $nbPagination = ceil($nbEntries / $perPage);
 ?>
 
   <div class="container">
@@ -29,7 +22,6 @@
         <div class="col-lg-4 col-md-5 col-sm-6">
           <img src="./assets/img/ninjatunesmonkey.jpg" width="250px" />
         </div>
-
         <div class="btn-group">
           <a  class="btn btn-default">Par page :</a>
           <a href="?page=<?=$current_page?>&perPage=10" class="btn btn-default<?=($perPage==10)?' active':''?>">10</a>
@@ -58,6 +50,7 @@
             <tbody>
 
               <?php
+              // displayResults();
               $keynumber=$current_page*$perPage-$perPage;
               // echo $keynumber;
               for($line = 1; $line <= $perPage; $line++): ?>
@@ -88,6 +81,7 @@
             <ul class="pagination">
               <li><a href="?page=1">&laquo;</a></li>
               <?php
+                // didplayPaginationMenu();
                 if ($current_page <= 5) {
                   $tmpNoPage = 1;
                 }
