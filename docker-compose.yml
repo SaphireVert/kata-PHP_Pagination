@@ -1,0 +1,8 @@
+version: "3"
+services:
+  php-apache:
+    image: "php:7.2-apache"
+    volumes:
+      - "${PWD}:/var/www/html/"
+    ports:
+      - "80:80"
