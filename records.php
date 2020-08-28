@@ -134,6 +134,7 @@ foreach ($dataObj->releases as $key => $value) {
   <h2 id="pagination">Pagination</h2>
     <ul class="pagination">
       <li><a href="?page=1">&laquo;</a></li>
+      <li><a href="?page=<?php echo ($current_page == 1) ? $current_page : $current_page - 1;?>">&lsaquo;</a></li>
       <?php
         if ($current_page <= 5) {
           $tmpNoPage = 1;
@@ -152,6 +153,7 @@ foreach ($dataObj->releases as $key => $value) {
       <?php
         $tmpNoPage++;
         endfor ?>
+        <li><a href="?page=<?php echo ($current_page == $nbPagination) ? $current_page : $current_page + 1;?>">&rsaquo;</a></li>
       <li><a href="?page=<?= (int)$nbPagination ?>">&raquo;</a></li>
     </ul>
 </div>
