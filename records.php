@@ -110,17 +110,19 @@ foreach ($dataObj->releases as $key => $value) {
                 <?php
                   $tmpEntry = $current_page * $perPage - $perPage;
                   for ($i=0; $i < $perPage ; $i++) {
-                    ?><td><?=$i + $tmpEntry + 1?></td><?
+                    if($dataObj->releases[$i + $tmpEntry]){
+                      ?><td><?=$i + $tmpEntry + 1?></td><?
 
-                    foreach ((array)$dataObj->releases[$i + $tmpEntry] as $key => $value) {
+                      foreach ((array)$dataObj->releases[$i + $tmpEntry] as $key => $value) {
+                        ?>
+                        <td><?=$value?></td>
+                        <?php
+                      }
                       ?>
-                      <td><?=$value?></td>
-                      <?php
-                    }
-                ?>
-              </tr>
+                    </tr>
 
-                <?php
+                    <?php
+                    }
                   }
                 ?>
 
